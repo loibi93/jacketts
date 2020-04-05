@@ -17,8 +17,8 @@
             app:title="@string/app_name"
             app:menu="@menu/main_menu"/>
 
-        <include
-            layout="@layout/search_bar"
+        <com.loibi93.jacketts.ui.view.SearchBar
+            android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/search_bar_left_icon_left_margin"
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/no_search_term" />
+            android:text="@string/before_first_search_note" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
