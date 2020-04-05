@@ -6,4 +6,6 @@
 
     <string name="no_search_term">Please search for something…</string>
     <string name="search_bar_hint">Search…</string>
+
+    <string name="settings">Settings</string>
 </resources>

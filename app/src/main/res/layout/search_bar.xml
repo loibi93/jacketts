@@ -17,13 +17,12 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/search_bar_left_icon_left_margin">
 
-            <ImageButton
-                android:id="@+id/search_bar_menu"
+            <ImageView
+                android:id="@+id/search_bar_icon"
                 android:layout_width="@dimen/search_bar_left_action_square_size"
                 android:layout_height="@dimen/search_bar_left_action_square_size"
-                android:background="@android:color/transparent"
                 android:padding="@dimen/search_bar_left_action_padding"
-                android:src="@drawable/menu_black" />
+                android:src="@drawable/search_black" />
 
             <ProgressBar
                 android:id="@+id/search_bar_progress"
@@ -65,8 +64,9 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:padding="@dimen/search_bar_left_action_padding"
+            android:visibility="gone"
             android:background="@android:color/transparent"
-            android:src="@drawable/search_black"/>
+            android:src="@drawable/clear_black"/>
 
     </RelativeLayout>
 
