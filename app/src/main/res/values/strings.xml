@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Jacketts</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <string name="no_search_term">Please search for something…</string>
+    <string name="search_bar_hint">Search…</string>
 </resources>
