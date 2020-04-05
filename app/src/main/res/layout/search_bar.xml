@@ -17,10 +17,11 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/search_bar_left_icon_left_margin">
 
-            <ImageView
-                android:id="@+id/search_bar_icon"
+            <ImageButton
+                android:id="@+id/search_bar_search_button"
                 android:layout_width="@dimen/search_bar_left_action_square_size"
                 android:layout_height="@dimen/search_bar_left_action_square_size"
+                android:background="@android:color/transparent"
                 android:padding="@dimen/search_bar_left_action_padding"
                 android:src="@drawable/search_black" />
 
@@ -41,32 +42,34 @@
             android:layout_toEndOf="@id/search_bar_left_section">
 
             <EditText
+                android:id="@+id/search_bar_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|start"
                 android:background="@android:color/transparent"
                 android:ellipsize="end"
                 android:hint="@string/search_bar_hint"
-                android:textColorHint="@android:color/darker_gray"
                 android:imeOptions="actionSearch"
                 android:inputType="textNoSuggestions"
                 android:longClickable="false"
                 android:maxLines="1"
                 android:minHeight="@dimen/search_bar_left_action_square_size"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="@dimen/search_bar_text_size" />
 
         </FrameLayout>
 
         <ImageButton
+            android:id="@+id/search_bar_clear"
             android:layout_width="@dimen/search_bar_left_action_square_size"
             android:layout_height="@dimen/search_bar_left_action_square_size"
-            android:id="@+id/search_bar_clear"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:padding="@dimen/search_bar_left_action_padding"
-            android:visibility="gone"
             android:background="@android:color/transparent"
-            android:src="@drawable/clear_black"/>
+            android:padding="@dimen/search_bar_left_action_padding"
+            android:src="@drawable/clear_black"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
