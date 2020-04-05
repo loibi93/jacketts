@@ -1,4 +1,4 @@
-package com.loibi93.jacketts.ui.main;
+package com.loibi93.jacketts.ui.model;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;

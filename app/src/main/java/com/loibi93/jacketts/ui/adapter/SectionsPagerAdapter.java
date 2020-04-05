@@ -1,4 +1,4 @@
-package com.loibi93.jacketts.ui.main;
+package com.loibi93.jacketts.ui.adapter;
 
 import android.content.Context;
 
@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.loibi93.jacketts.R;
+import com.loibi93.jacketts.ui.fragment.PlaceholderFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

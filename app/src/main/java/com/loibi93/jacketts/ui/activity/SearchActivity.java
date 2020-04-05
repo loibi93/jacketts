@@ -1,4 +1,4 @@
-package com.loibi93.jacketts;
+package com.loibi93.jacketts.ui.activity;
 
 import android.os.Bundle;
 
@@ -6,7 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.loibi93.jacketts.ui.main.SectionsPagerAdapter;
+import com.loibi93.jacketts.R;
+import com.loibi93.jacketts.ui.adapter.SectionsPagerAdapter;
 
 public class SearchActivity extends AppCompatActivity {
 

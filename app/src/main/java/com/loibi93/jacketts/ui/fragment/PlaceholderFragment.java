@@ -1,4 +1,4 @@
-package com.loibi93.jacketts.ui.main;
+package com.loibi93.jacketts.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.loibi93.jacketts.R;
+import com.loibi93.jacketts.ui.model.PageViewModel;
 
 /**
  * A placeholder fragment containing a simple view.
