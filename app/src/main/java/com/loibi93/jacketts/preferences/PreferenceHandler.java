@@ -36,28 +36,28 @@ public class PreferenceHandler {
         sharedPreferences().edit().putStringSet(key.name(), value).apply();
     }
 
-    public static void getStringPreference(final PreferenceKey key, final String defaultValue) {
-        sharedPreferences().getString(key.name(), defaultValue);
+    public static String getStringPreference(final PreferenceKey key, final String defaultValue) {
+        return sharedPreferences().getString(key.name(), defaultValue);
     }
 
-    public static void getBooleanPreference(final PreferenceKey key, final boolean defaultValue) {
-        sharedPreferences().getBoolean(key.name(), defaultValue);
+    public static boolean getBooleanPreference(final PreferenceKey key, final boolean defaultValue) {
+        return sharedPreferences().getBoolean(key.name(), defaultValue);
     }
 
-    public static void getFloatPreference(final PreferenceKey key, final float defaultValue) {
-        sharedPreferences().getFloat(key.name(), defaultValue);
+    public static float getFloatPreference(final PreferenceKey key, final float defaultValue) {
+        return sharedPreferences().getFloat(key.name(), defaultValue);
     }
 
-    public static void getIntPreference(final PreferenceKey key, final int defaultValue) {
-        sharedPreferences().getInt(key.name(), defaultValue);
+    public static int getIntPreference(final PreferenceKey key, final int defaultValue) {
+        return sharedPreferences().getInt(key.name(), defaultValue);
     }
 
-    public static void getLongPreference(final PreferenceKey key, final long defaultValue) {
-        sharedPreferences().getLong(key.name(), defaultValue);
+    public static long getLongPreference(final PreferenceKey key, final long defaultValue) {
+        return sharedPreferences().getLong(key.name(), defaultValue);
     }
 
-    public static void getStringSetPreference(final PreferenceKey key, final Set<String> defaultValue) {
-        sharedPreferences().getStringSet(key.name(), defaultValue);
+    public static Set<String> getStringSetPreference(final PreferenceKey key, final Set<String> defaultValue) {
+        return sharedPreferences().getStringSet(key.name(), defaultValue);
     }
 
     private static SharedPreferences sharedPreferences() {
