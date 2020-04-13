@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">Jacketts</string>
-    <string name="title_activity_search">SearchActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
 
     <string name="before_first_search_note">Please search for something…</string>
     <string name="search_bar_hint">Search…</string>
@@ -11,4 +8,18 @@
     <string name="no_result">Nothing found.</string>
 
     <string name="settings">Settings</string>
+    <string name="server_settings">Server Settings</string>
+    <string name="server_url_pref">Server URL</string>
+    <string name="server_url_desc">The URL you use to browse to your Jackett Instance.</string>
+    <string name="password_pref">Password</string>
+    <string name="password_desc">The password you have set for your Jackett Instance.</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="login_error_404">Server was found but returned 404.</string>
+    <string name="login_error_500">Could not reach Server.</string>
+    <string name="login_error_501">Host is unknown.</string>
+    <string name="login_error_502">Unknown Service, maybe you have chosen the wrong Protocol.</string>
+    <string name="login_error_401">Wrong Password.</string>
 </resources>

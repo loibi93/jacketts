@@ -12,4 +12,7 @@
     <dimen name="search_bar_left_action_square_size">48dp</dimen>
     <dimen name="search_bar_left_action_padding">12dp</dimen>
     <dimen name="search_bar_text_size">16sp</dimen>
+
+    <dimen name="tag_padding">8dp</dimen>
+    <dimen name="result_props_margin">12dp</dimen>
 </resources>

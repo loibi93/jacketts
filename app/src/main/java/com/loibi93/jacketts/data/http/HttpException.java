@@ -18,6 +18,14 @@ public class HttpException extends Throwable {
         return String.format("Error when executing HttpRequest: %s", code);
     }
 
+    public int getCode() {
+        return code;
+    }
+
+    public String getOriginalMessage() {
+        return originalException == null ? null : originalException.getMessage();
+    }
+
     @Override
     public void printStackTrace() {
         if (originalException != null) {

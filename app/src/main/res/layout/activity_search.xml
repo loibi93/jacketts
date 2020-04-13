@@ -41,14 +41,28 @@
 
             </LinearLayout>
 
-            <ProgressBar
-                android:id="@+id/tabLoadingView"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="96dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/search_bar_left_icon_left_margin"
-                android:scaleX="0.3"
-                android:scaleY="0.3" />
+                android:layout_height="112dp">
+
+                <Button
+                    android:id="@+id/settings_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button"
+                    android:backgroundTint="@color/primary_dark"
+                    android:text="@string/settings"
+                    android:visibility="gone" />
+
+                <ProgressBar
+                    android:id="@+id/tab_loading_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5" />
+            </FrameLayout>
 
         </FrameLayout>
 
@@ -62,6 +76,34 @@
         android:scaleY="0.1"
         android:src="@mipmap/ic_launcher_round"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <RelativeLayout
+        android:id="@+id/message_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/message_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="visible"
+            android:layout_margin="12dp"
+            android:gravity="center"
+            tools:text="Unknown Service, maybe you have choosen the wrong Protocol." />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/message_detail_view"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:layout_below="@id/message_view"
+            tools:text="UnkownService Exception" />
+
+    </RelativeLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
