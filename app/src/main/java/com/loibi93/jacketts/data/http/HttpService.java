@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.loibi93.jacketts.data.misc.ServerConfig;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
+import java.net.UnknownServiceException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -100,6 +102,10 @@ public class HttpService {
 
         execute(request, false).close();
 
+        if (!cookieJar.isLoggedIn()) {
+            throw new HttpException(401);
+        }
+
         String serverConfigJson = get(SERVER_CONFIG_ENDPOINT, null);
         ServerConfig serverConfig = gson.fromJson(serverConfigJson, ServerConfig.class);
         apiKey = serverConfig.getApiKey();
@@ -123,6 +129,10 @@ public class HttpService {
         Response response;
         try {
             response = httpClient.newCall(request).execute();
+        } catch (UnknownHostException e) {
+            throw new HttpException(501, e);
+        } catch (UnknownServiceException e) {
+            throw new HttpException(502, e);
         } catch (IOException e) {
             throw new HttpException(500, e);
         }

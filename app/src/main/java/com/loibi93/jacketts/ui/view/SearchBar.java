@@ -27,7 +27,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static com.loibi93.jacketts.ui.UiUtils.AnimationLength.SHORT;
-import static com.loibi93.jacketts.ui.UiUtils.animateVisibilityChange;
 import static com.loibi93.jacketts.ui.UiUtils.switchViews;
 
 public class SearchBar extends FrameLayout implements TextView.OnEditorActionListener, TextWatcher, View.OnClickListener {
@@ -35,6 +34,7 @@ public class SearchBar extends FrameLayout implements TextView.OnEditorActionLis
     private ImageButton clearButton;
     private ImageButton optionsButton;
     private Set<OnSearchListener> onSearchListeners;
+    private PopupMenu.OnMenuItemClickListener onMenuItemClickListener;
 
     private InputMethodManager inputMethodManager;
 
@@ -111,10 +111,15 @@ public class SearchBar extends FrameLayout implements TextView.OnEditorActionLis
         MenuInflater inflater = menu.getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu.getMenu());
         menu.show();
+        menu.setOnMenuItemClickListener(onMenuItemClickListener);
     }
 
     public void addOnSearchListener(OnSearchListener onSearchListener) {
         this.onSearchListeners.add(onSearchListener);
+    }
+
+    public void setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener listener) {
+        this.onMenuItemClickListener = listener;
     }
 
     private void initiateSearch(String query) {

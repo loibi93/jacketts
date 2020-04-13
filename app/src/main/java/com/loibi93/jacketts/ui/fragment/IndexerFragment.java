@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.loibi93.jacketts.ui.UiUtils.AnimationLength.NONE;
-import static com.loibi93.jacketts.ui.UiUtils.AnimationLength.SHORT;
 import static com.loibi93.jacketts.ui.UiUtils.switchViews;
 
 public class IndexerFragment extends Fragment {
