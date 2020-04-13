@@ -6,7 +6,9 @@
 
     <string name="before_first_search_note">Please search for something…</string>
     <string name="search_bar_hint">Search…</string>
+    <string name="searching">Searching…</string>
     <string name="no_search_term">No search term entered.</string>
+    <string name="no_result">Nothing found.</string>
 
     <string name="settings">Settings</string>
 </resources>

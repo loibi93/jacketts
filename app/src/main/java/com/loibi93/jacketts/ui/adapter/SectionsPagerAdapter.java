@@ -1,47 +1,39 @@
 package com.loibi93.jacketts.ui.adapter;
 
-import android.content.Context;
-
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.loibi93.jacketts.R;
-import com.loibi93.jacketts.ui.fragment.PlaceholderFragment;
+import com.loibi93.jacketts.data.indexer.IndexerDto;
+import com.loibi93.jacketts.ui.fragment.IndexerFragment;
 
-/**
- * A [FragmentPagerAdapter] that returns a fragment corresponding to
- * one of the sections/tabs/pages.
- */
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    private List<IndexerDto> indexers;
 
-    @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
-    private final Context mContext;
-
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(List<IndexerDto> indexers, FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        mContext = context;
+        this.indexers = indexers;
     }
 
+    @NotNull
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        return IndexerFragment.newInstance(indexers.get(position));
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
+        return indexers.get(position).getName();
     }
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
-        return 2;
+        return indexers.size();
     }
 }

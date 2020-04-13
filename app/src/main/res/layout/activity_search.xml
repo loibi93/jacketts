@@ -11,45 +11,63 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:title="@string/app_name"
-            app:menu="@menu/main_menu"/>
+            android:layout_height="wrap_content">
 
-        <com.loibi93.jacketts.ui.view.SearchBar
-            android:id="@+id/search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/search_bar_left_icon_left_margin"
-            android:layout_marginBottom="24dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:visibility="gone" />
+                <com.loibi93.jacketts.ui.view.SearchBar
+                    android:id="@+id/search_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/search_bar_left_icon_left_margin"
+                    android:layout_marginBottom="24dp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:visibility="gone"
+                    app:tabIndicatorColor="@android:color/white"
+                    app:tabMode="scrollable"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabTextAppearance="@android:style/TextAppearance.DeviceDefault.Small" />
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/tabLoadingView"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/search_bar_left_icon_left_margin"
+                android:scaleX="0.3"
+                android:scaleY="0.3" />
+
+        </FrameLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/app_icon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:scaleX="0.1"
+        android:scaleY="0.1"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/before_first_search_note" />
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
-
-    </RelativeLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

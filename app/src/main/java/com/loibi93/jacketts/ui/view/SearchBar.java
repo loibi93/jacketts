@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -12,21 +13,28 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.loibi93.jacketts.R;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import static com.loibi93.jacketts.ui.UiUtils.AnimationLength.SHORT;
+import static com.loibi93.jacketts.ui.UiUtils.animateVisibilityChange;
+import static com.loibi93.jacketts.ui.UiUtils.switchViews;
+
 public class SearchBar extends FrameLayout implements TextView.OnEditorActionListener, TextWatcher, View.OnClickListener {
-    private ImageView searchButton;
-    private ProgressBar loadingIndicator;
     private EditText searchText;
     private ImageButton clearButton;
-    private OnSearchListener onSearchListener = null;
+    private ImageButton optionsButton;
+    private Set<OnSearchListener> onSearchListeners;
 
     private InputMethodManager inputMethodManager;
 
@@ -48,18 +56,21 @@ public class SearchBar extends FrameLayout implements TextView.OnEditorActionLis
     private void init(@NonNull Context context) {
         inflate(context, R.layout.search_bar, this);
 
-        searchButton = findViewById(R.id.search_bar_search_button);
-        loadingIndicator = findViewById(R.id.search_bar_progress);
+        onSearchListeners = new HashSet<>();
+
+        ImageView settingsButton = findViewById(R.id.search_bar_settings_button);
         searchText = findViewById(R.id.search_bar_text);
         clearButton = findViewById(R.id.search_bar_clear);
+        optionsButton = findViewById(R.id.search_bar_options);
 
         inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
 
         searchText.setOnEditorActionListener(this);
         searchText.addTextChangedListener(this);
 
-        searchButton.setOnClickListener(this);
+        settingsButton.setOnClickListener(this);
         clearButton.setOnClickListener(this);
+        optionsButton.setOnClickListener(this);
     }
 
     @Override
@@ -74,9 +85,9 @@ public class SearchBar extends FrameLayout implements TextView.OnEditorActionLis
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (s.length() != 0) {
-            clearButton.setVisibility(VISIBLE);
+            switchViews(optionsButton, clearButton, SHORT);
         } else {
-            clearButton.setVisibility(GONE);
+            switchViews(clearButton, optionsButton, SHORT);
         }
     }
 
@@ -86,20 +97,24 @@ public class SearchBar extends FrameLayout implements TextView.OnEditorActionLis
             case R.id.search_bar_clear:
                 searchText.setText("");
                 break;
-            case R.id.search_bar_search_button:
-                initiateSearch(searchText.getText().toString());
+            case R.id.search_bar_settings_button:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+            case R.id.search_bar_options:
+                showMenu(optionsButton);
                 break;
         }
     }
 
-    public void setOnSearchListener(OnSearchListener onSearchListener) {
-        this.onSearchListener = onSearchListener;
+    private void showMenu(View view) {
+        PopupMenu menu = new PopupMenu(getContext(), view);
+        MenuInflater inflater = menu.getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu.getMenu());
+        menu.show();
     }
 
-    public void notifySearchComplete() {
-        searchButton.setVisibility(VISIBLE);
-        loadingIndicator.setVisibility(GONE);
-        searchText.setInputType(EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+    public void addOnSearchListener(OnSearchListener onSearchListener) {
+        this.onSearchListeners.add(onSearchListener);
     }
 
     private void initiateSearch(String query) {
@@ -107,19 +122,12 @@ public class SearchBar extends FrameLayout implements TextView.OnEditorActionLis
             Toast.makeText(getContext(), R.string.no_search_term, Toast.LENGTH_SHORT).show();
             return;
         }
-        searchButton.setVisibility(GONE);
-        loadingIndicator.setVisibility(VISIBLE);
-        searchText.setInputType(EditorInfo.IME_ACTION_NONE);
 
         inputMethodManager.hideSoftInputFromWindow(getWindowToken(), 0);
 
-        if (onSearchListener != null) {
-            onSearchListener.onSearch(query);
+        for (OnSearchListener listener : onSearchListeners) {
+            listener.onSearch(query);
         }
-    }
-
-    public interface OnSearchListener {
-        void onSearch(String query);
     }
 
     @Override
@@ -128,5 +136,9 @@ public class SearchBar extends FrameLayout implements TextView.OnEditorActionLis
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    }
+
+    public interface OnSearchListener {
+        void onSearch(String query);
     }
 }

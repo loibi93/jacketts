@@ -1,54 +1,58 @@
 package com.loibi93.jacketts.data;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
-public abstract class AsyncLiveData<I, O> extends LiveData<O> implements AsyncCallback<O>, Runnable {
-    private I asyncFunctionInput;
-    private Exception error;
-    private boolean isLoading;
-    private Thread backgroundThread;
+import com.loibi93.jacketts.data.http.HttpException;
+
+public abstract class AsyncLiveData<I, O> implements Runnable {
+    protected I asyncFunctionInput;
+    private MutableLiveData<O> liveData;
+    private MutableLiveData<HttpException> errorLiveData;
+    private MutableLiveData<Boolean> isLoadingData;
 
     public AsyncLiveData() {
-        this(null);
+        this.asyncFunctionInput = null;
+        this.liveData = new MutableLiveData<>();
+        this.errorLiveData = new MutableLiveData<>();
+        this.isLoadingData = new MutableLiveData<>();
     }
 
-    public AsyncLiveData(I asyncFunctionInput) {
+    public LiveData<O> getData() {
+        return liveData;
+    }
+
+    public LiveData<HttpException> getErrorData() {
+        return errorLiveData;
+    }
+
+    public LiveData<Boolean> getIsLoadingData() {
+        return isLoadingData;
+    }
+
+    protected abstract O loadData(I input) throws HttpException;
+
+    public void update() {
+        update(null);
+    }
+
+    public void update(I asyncFunctionInput) {
         this.asyncFunctionInput = asyncFunctionInput;
-        this.error = null;
-        this.isLoading = false;
-        this.backgroundThread = null;
-    }
-
-    protected abstract O getData(I input);
-
-    protected void onError(Exception error) {
-        this.error = error;
-    }
-
-    public boolean isLoading() {
-        return isLoading;
-    }
-
-    public Exception getError() {
-        return error;
-    }
-
-    @Override
-    protected void onActive() {
-        isLoading = true;
-        backgroundThread = new Thread(this);
+        Thread backgroundThread = new Thread(this);
         backgroundThread.start();
-    }
-
-    @Override
-    public void onFinish(O result) {
-        setValue(result);
-        isLoading = false;
+        isLoadingData.postValue(true);
     }
 
     @Override
     public void run() {
-        O result = getData(asyncFunctionInput);
-        onFinish(result);
+        try {
+            O result = loadData(asyncFunctionInput);
+            liveData.postValue(result);
+            errorLiveData.postValue(null);
+        } catch (HttpException e) {
+            liveData.postValue(null);
+            errorLiveData.postValue(e);
+        }
+        isLoadingData.postValue(false);
     }
 }
