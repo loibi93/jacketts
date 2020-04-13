@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#00796b</color>
-    <color name="primaryLightColor">#48a999</color>
-    <color name="primaryDarkColor">#004c40</color>
-    <color name="primaryTextColor">#ffffff</color>
+    <color name="primary">#9C27B0</color>
+    <color name="primary_dark">#7B1FA2</color>
+    <color name="primary_light">#E1BEE7</color>
+    <color name="accent">#FFC107</color>
+
+    <color name="primary_standard">#9C27B0</color>
+    <color name="primary_dark_standard">#7B1FA2</color>
+    <color name="primary_light_standard">#E1BEE7</color>
+
+    <color name="accent_complementary">#fffcf2</color>
+    <color name="primary_text">#212121</color>
+    <color name="primary_text_complementary">#dedede</color>
+    <color name="secondary_text">#757575</color>
+    <color name="secondary_text_complementary">#ebebeb</color>
+    <color name="icons">#70000000</color>
+    <color name="positiveColor">#0ad111</color>
+    <color name="negativeColor">#ff1414</color>
 </resources>

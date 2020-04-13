@@ -18,19 +18,12 @@
             android:layout_marginStart="@dimen/search_bar_left_icon_left_margin">
 
             <ImageButton
-                android:id="@+id/search_bar_search_button"
+                android:id="@+id/search_bar_settings_button"
                 android:layout_width="@dimen/search_bar_left_action_square_size"
                 android:layout_height="@dimen/search_bar_left_action_square_size"
                 android:background="@android:color/transparent"
                 android:padding="@dimen/search_bar_left_action_padding"
-                android:src="@drawable/search_black" />
-
-            <ProgressBar
-                android:id="@+id/search_bar_progress"
-                android:layout_width="@dimen/search_bar_left_action_square_size"
-                android:layout_height="@dimen/search_bar_left_action_square_size"
-                android:padding="@dimen/search_bar_left_action_padding"
-                android:visibility="gone" />
+                android:src="@drawable/settings_black" />
 
         </FrameLayout>
 
@@ -39,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="20dp"
+            android:layout_toStartOf="@id/search_bar_right_section"
             android:layout_toEndOf="@id/search_bar_left_section">
 
             <EditText
@@ -54,22 +48,35 @@
                 android:longClickable="false"
                 android:maxLines="1"
                 android:minHeight="@dimen/search_bar_left_action_square_size"
+                android:textColor="@color/primary_text"
                 android:textColorHint="@android:color/darker_gray"
-                android:textColor="@android:color/darker_gray"
                 android:textSize="@dimen/search_bar_text_size" />
 
         </FrameLayout>
 
-        <ImageButton
-            android:id="@+id/search_bar_clear"
+        <FrameLayout
+            android:id="@+id/search_bar_right_section"
             android:layout_width="@dimen/search_bar_left_action_square_size"
             android:layout_height="@dimen/search_bar_left_action_square_size"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="@android:color/transparent"
-            android:padding="@dimen/search_bar_left_action_padding"
-            android:src="@drawable/clear_black"
-            android:visibility="gone" />
+            android:layout_centerVertical="true" >
+
+            <ImageButton
+                android:id="@+id/search_bar_options"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:src="@drawable/options" />
+
+            <ImageButton
+                android:id="@+id/search_bar_clear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:src="@drawable/clear_black"
+                android:visibility="gone" />
+
+        </FrameLayout>
 
     </RelativeLayout>
 

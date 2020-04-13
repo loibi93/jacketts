@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:paddingBottom="6dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/primary_text"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="PC.Games.Hardware.Sonderheft.-.Das.Grosse.TestJahrbuch.-.2020.pdf" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp">
+
+        <TextView
+            android:id="@+id/size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/accent_complementary"
+            android:background="@drawable/rounded_corner_accent"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="5,4 GB" />
+
+        <LinearLayout
+            android:id="@+id/filesContainer"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/size"
+            android:background="@drawable/rounded_corner_primary_light"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="12dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="8dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/file_primary_color" />
+
+            <TextView
+                android:id="@+id/files"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/primary_dark_standard"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="5" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/filesContainer"
+            android:background="@drawable/rounded_corner_secondary_text"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:textColor="@color/secondary_text_complementary"
+            android:textSize="12sp"
+            tools:text="Books/Magazines" />
+
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/category"
+            android:textColor="@color/secondary_text"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="24d" />
+
+        <TextView
+            android:id="@+id/leechers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/negativeColor"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="4" />
+
+        <TextView
+            android:id="@+id/leechers_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/leechers"
+            android:text="↓"
+            android:textColor="@color/negativeColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/seperator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_toStartOf="@id/leechers_title"
+            android:text="|"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/seeders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/seperator"
+            android:textColor="@color/positiveColor"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="10" />
+
+        <TextView
+            android:id="@+id/seeders_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/seeders"
+            android:text="↑"
+            android:textColor="@color/positiveColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
