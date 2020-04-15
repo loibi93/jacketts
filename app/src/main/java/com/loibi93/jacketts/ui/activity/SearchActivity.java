@@ -74,7 +74,7 @@ public class SearchActivity extends AppCompatActivity implements PopupMenu.OnMen
         super.onResume();
         if (serverSettingsChanged) {
             successfulInit = false;
-            serverSettingsChanged = true;
+            serverSettingsChanged = false;
         }
         if (!successfulInit) {
             loadingView.setVisibility(View.VISIBLE);

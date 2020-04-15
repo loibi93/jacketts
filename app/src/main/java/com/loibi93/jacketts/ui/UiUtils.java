@@ -81,7 +81,10 @@ public class UiUtils {
         return 0;
     }
 
-    public static String humanReadableByteCount(long bytes) {
+    public static String humanReadableByteCount(Long bytes) {
+        if (bytes == null) {
+            return null;
+        }
         if (-1000 < bytes && bytes < 1000) {
             return bytes + " B";
         }
