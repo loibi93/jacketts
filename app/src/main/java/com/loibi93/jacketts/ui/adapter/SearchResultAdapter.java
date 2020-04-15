@@ -31,12 +31,21 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     public void onBindViewHolder(SearchResultViewHolder holder, int position) {
         SearchResultItemDto item = dataset.get(position);
         holder.titleView.setText(item.getTitle());
-        holder.sizeView.setText(humanReadableByteCount(item.getSize()));
-        holder.filesView.setText(item.getFilesHumanReadable());
-        holder.categoryView.setText(item.getCategoryDesc());
-        holder.ageView.setText(item.getAgeHumanReadable());
+        setText(humanReadableByteCount(item.getSize()), holder.sizeView, holder.sizeView);
+        setText(item.getFilesHumanReadable(), holder.filesView, holder.filesContainer);
+        setText(item.getCategoryDesc(), holder.categoryView, holder.categoryView);
+        setText(item.getAgeHumanReadable(), holder.ageView, holder.ageView);
         holder.seedersView.setText(String.valueOf(item.getSeeders()));
         holder.leechersView.setText(String.valueOf(item.getPeers()));
+    }
+
+    private void setText(String text, TextView view, View container) {
+        if (text == null || text.isEmpty()) {
+            container.setVisibility(View.GONE);
+        } else {
+            container.setVisibility(View.VISIBLE);
+            view.setText(text);
+        }
     }
 
     @Override
@@ -58,6 +67,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         public TextView titleView;
         public TextView sizeView;
         public TextView filesView;
+        public View filesContainer;
         public TextView categoryView;
         public TextView ageView;
         public TextView seedersView;
@@ -68,6 +78,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             this.titleView = view.findViewById(R.id.title);
             this.sizeView = view.findViewById(R.id.size);
             this.filesView = view.findViewById(R.id.files);
+            this.filesContainer = view.findViewById(R.id.filesContainer);
             this.categoryView = view.findViewById(R.id.category);
             this.ageView = view.findViewById(R.id.age);
             this.seedersView = view.findViewById(R.id.seeders);

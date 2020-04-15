@@ -22,16 +22,16 @@ public class SearchResultItemDto {
     private String PublishDate;
     private transient int age = -1;
     private List<Integer> Category;
-    private long Size;
-    private int Files;
-    private int Grabs;
+    private Long Size;
+    private Integer Files;
+    private Integer Grabs;
     private String Description;
     private Integer RageId;
     private Integer TVDBId;
     private Integer Imdb;
     private Integer TMDb;
-    private int Seeders;
-    private int Peers;
+    private Integer Seeders;
+    private Integer Peers;
 
     private SearchResultItemDto() {
     }
@@ -40,7 +40,10 @@ public class SearchResultItemDto {
         return FirstSeen;
     }
 
-    public int getAge() {
+    public Integer getAge() {
+        if (PublishDate == null) {
+            return null;
+        }
         if (age != -1) {
             return age;
         }
@@ -64,7 +67,10 @@ public class SearchResultItemDto {
     }
 
     public String getAgeHumanReadable() {
-        int age = getAge();
+        Integer age = getAge();
+        if (age == null) {
+            return null;
+        }
         if (age > 24) {
             return (age / 24) + "d";
         }
@@ -121,6 +127,9 @@ public class SearchResultItemDto {
     }
 
     public String getFilesHumanReadable() {
+        if (Files == null) {
+            return null;
+        }
         if (Files > 0) {
             return String.valueOf(Files);
         } else {
