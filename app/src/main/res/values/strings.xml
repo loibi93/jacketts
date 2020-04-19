@@ -13,6 +13,12 @@
     <string name="server_url_desc">The URL you use to browse to your Jackett Instance.</string>
     <string name="password_pref">Password</string>
     <string name="password_desc">The password you have set for your Jackett Instance.</string>
+    <string name="ui_settings">UI Settings</string>
+    <string name="theme_pref">UI Theme</string>
+    <string name="theme_desc">Change UI Theme</string>
+    <string name="theme_option_light">Light</string>
+    <string name="theme_option_dark">Dark</string>
+    <string name="theme_option_system">System</string>
 
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
