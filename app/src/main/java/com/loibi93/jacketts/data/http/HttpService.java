@@ -2,6 +2,8 @@ package com.loibi93.jacketts.data.http;
 
 import com.google.gson.Gson;
 import com.loibi93.jacketts.data.misc.ServerConfig;
+import com.loibi93.jacketts.preferences.PreferenceHandler;
+import com.loibi93.jacketts.preferences.PreferenceKey;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -17,12 +19,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-import static com.loibi93.jacketts.preferences.PreferenceHandler.getIntPreference;
 import static com.loibi93.jacketts.preferences.PreferenceHandler.getStringPreference;
-import static com.loibi93.jacketts.preferences.PreferenceKey.BASE_URL;
 import static com.loibi93.jacketts.preferences.PreferenceKey.PASSWORD;
-import static com.loibi93.jacketts.preferences.PreferenceKey.PORT;
-import static com.loibi93.jacketts.preferences.PreferenceKey.PROTOCOL;
 
 public class HttpService {
     private static final String LOGIN_ENDPOINT = "UI/Dashboard";
@@ -145,9 +143,13 @@ public class HttpService {
     }
 
     private HttpUrl.Builder getBaseUrlBuilder() {
-        return new HttpUrl.Builder()
-                .scheme(getStringPreference(PROTOCOL, "https"))
-                .host(getStringPreference(BASE_URL, "google.com"))
-                .port(getIntPreference(PORT, 443));
+        HttpUrl baseUrl = HttpUrl.parse(PreferenceHandler.getStringPreference(PreferenceKey.URL, "https://change.me"));
+        if (baseUrl == null) {
+            return new HttpUrl.Builder()
+                    .scheme("https")
+                    .host("change.me")
+                    .port(443);
+        }
+        return baseUrl.newBuilder();
     }
 }

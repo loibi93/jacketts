@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import com.loibi93.jacketts.R;
 
@@ -98,7 +97,6 @@ public class SearchBar extends FrameLayout implements TextView.OnEditorActionLis
                 searchText.setText("");
                 break;
             case R.id.search_bar_settings_button:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 break;
             case R.id.search_bar_options:
                 showMenu(optionsButton);

@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     android:padding="12dp">
 
-    <EditText
-        android:id="@+id/password_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword" />
+    <RadioGroup
+        android:id="@+id/settings_radiobox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
